@@ -1,2 +1,51 @@
 <!DOCTYPE html>
 <title>Open Jaw Flight Finder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" integrity="sha256-2k1KVsNPRXxZOsXQ8aqcZ9GOOwmJTMoOB5o5Qp1d6/s=" crossorigin="anonymous" />
+<section class="section">
+  <div class="container">
+    <form id="email-signup-form">
+      <div class='field'>
+        <label class="label" for="origin">Where are you departing from?</label>
+        <input class="input" type="text" placeholder="Ex: LGA, JFK" id="origin" name="origin" required>
+      </div>
+      <div class='field'>
+        <label class="label" for="first-destination">Where are you going?</label>
+        <input class="input" type="text" placeholder="Ex: SFO, SJC" id="first-destination" name="first-destination" required>
+      </div>
+      <div class='field'>
+        <label class="label" for="second-destination">Where are you returning to?</label>
+        <input class="input" type="text" placeholder="Ex: SFO, SJC" id="second-destination" name="second-destination" required>
+      </div>
+      <div class='field'>
+        <label class="label" for="departure-date">When are you going to?</label>
+        <input class="input" type="date" id="departure-date" name="departure-date" required>
+      </div>
+      <div class='field'>
+        <label class="label" for="departure-flexibility">How flexible is this date?</label>
+        <input type="radio" name="departure-flexibility" value="0">
+        Not flexible
+        <input type="radio" name="departure-flexibility" value="3">
+        A bit flexible
+        <input type="radio" name="departure-flexibility" value="7">
+        Very flexible
+      </div>
+      <div class='field'>
+        <label class="label" for="return-date">When are you going back to?</label>
+        <input class="input" type="date" id="return-date" name="return-date" required>
+      </div>
+      <div class='field'>
+        <label class="label" for="return-flexibility">How flexible is this date?</label>
+        <input type="radio" name="return-flexibility" value="0">
+        Not flexible
+        <input type="radio" name="return-flexibility" value="3">
+        A bit flexible
+        <input type="radio" name="return-flexibility" value="7">
+        Very flexible
+      </div>
+      <button class="button is-link" id="open-button">Open Google Flight tabs!</button>
+  </div>
+</section>
+
+<script type="text/javascript" src="js/dist/analyze-flights.js"></script>
+</form>
