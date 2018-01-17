@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EAKT,UAAU,EAAE,KAAK;EACjB,QAAQ,EAAE,MAAM;EAChB,UAAU,EAAE,2BAA2B;EANvC,iBAAS;IACP,UAAU,EAAE,CAAC;IACb,OAAO,EAAE,CAAC",
+"sources": ["../src/analyze_flights.scss"],
+"names": [],
+"file": "analyze_flights.css"
+}

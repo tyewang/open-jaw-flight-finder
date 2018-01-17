@@ -9,6 +9,19 @@ const addNDaysToDateString = (dateString, n) => {
 }
 
 (function(){
+  const locationInputIds = ['origin', 'first-destination', 'second-destination'];
+  locationInputIds.forEach((elementId) => {
+    document.getElementById(elementId).onkeypress = (e) => {
+      const allFieldsFilledIn = locationInputIds.every((elementId) => {
+        return !!document.getElementById(elementId).value;
+      });
+
+      if(allFieldsFilledIn){
+        document.getElementById('dates-div').className = '';
+      }
+    }
+  });
+
   document.getElementById("open-button").onclick = (e) => {
     const [origins, firstDestinations, secondDestinations] = [
       'origin',

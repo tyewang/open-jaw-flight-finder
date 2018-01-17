@@ -13,6 +13,19 @@ var addNDaysToDateString = function addNDaysToDateString(dateString, n) {
 };
 
 (function () {
+  var locationInputIds = ['origin', 'first-destination', 'second-destination'];
+  locationInputIds.forEach(function (elementId) {
+    document.getElementById(elementId).onkeypress = function (e) {
+      var allFieldsFilledIn = locationInputIds.every(function (elementId) {
+        return !!document.getElementById(elementId).value;
+      });
+
+      if (allFieldsFilledIn) {
+        document.getElementById('dates-div').className = '';
+      }
+    };
+  });
+
   document.getElementById("open-button").onclick = function (e) {
     var _map = ['origin', 'first-destination', 'second-destination'].map(function (elementId) {
       var value = document.getElementById(elementId).value;
