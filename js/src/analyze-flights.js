@@ -10,14 +10,23 @@ const addNDaysToDateString = (dateString, n) => {
 
 (function(){
   const locationInputIds = ['origin', 'first-destination', 'second-destination'];
+  let timeout;
   locationInputIds.forEach((elementId) => {
-    document.getElementById(elementId).onkeypress = (e) => {
-      const allFieldsFilledIn = locationInputIds.every((elementId) => {
-        return !!document.getElementById(elementId).value;
+    document.getElementById(elementId).onkeyup = (e) => {
+      const locationValues = locationInputIds.map((elementId) => {
+        return document.getElementById(elementId).value;
       });
 
+      const allFieldsFilledIn = locationValues.every((e) => e);
       if(allFieldsFilledIn){
-        document.getElementById('dates-div').className = '';
+        if(timeout){
+          clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+          document.getElementById('dates-div').className = '';
+          document.querySelector('label[for="departure-date"]').textContent = `When are you going to ${locationValues[1]}?`;
+          document.querySelector('label[for="return-date"]').textContent = `When are you going back to ${locationValues[2]}?`;
+        }, 500);
       }
     }
   });

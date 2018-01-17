@@ -14,14 +14,25 @@ var addNDaysToDateString = function addNDaysToDateString(dateString, n) {
 
 (function () {
   var locationInputIds = ['origin', 'first-destination', 'second-destination'];
+  var timeout = void 0;
   locationInputIds.forEach(function (elementId) {
-    document.getElementById(elementId).onkeypress = function (e) {
-      var allFieldsFilledIn = locationInputIds.every(function (elementId) {
-        return !!document.getElementById(elementId).value;
+    document.getElementById(elementId).onkeyup = function (e) {
+      var locationValues = locationInputIds.map(function (elementId) {
+        return document.getElementById(elementId).value;
       });
 
+      var allFieldsFilledIn = locationValues.every(function (e) {
+        return e;
+      });
       if (allFieldsFilledIn) {
-        document.getElementById('dates-div').className = '';
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+        timeout = setTimeout(function () {
+          document.getElementById('dates-div').className = '';
+          document.querySelector('label[for="departure-date"]').textContent = 'When are you going to ' + locationValues[1] + '?';
+          document.querySelector('label[for="return-date"]').textContent = 'When are you going back to ' + locationValues[2] + '?';
+        }, 500);
       }
     };
   });
