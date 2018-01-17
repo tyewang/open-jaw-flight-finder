@@ -16,6 +16,15 @@ const addNDaysToDateString = (dateString, n) => {
     });
   });
 
+  document.querySelectorAll('input[type="radio"]').forEach((e) => {
+    e.onchange = () => {
+      const departureFlexibility = parseInt(document.querySelector(`input[name="departure-flexibility"]:checked`).value)
+      const returnFlexibility = parseInt(document.querySelector(`input[name="return-flexibility"]:checked`).value)
+      const numTabs = departureFlexibility * returnFlexibility;
+      document.getElementById("open-button").textContent = `Open ${numTabs} tabs in Google Flights`;
+    }
+  });
+
   const locationInputIds = ['origin', 'first-destination', 'second-destination'];
   let timeout;
   locationInputIds.forEach((elementId) => {

@@ -20,6 +20,15 @@ var addNDaysToDateString = function addNDaysToDateString(dateString, n) {
     });
   });
 
+  document.querySelectorAll('input[type="radio"]').forEach(function (e) {
+    e.onchange = function () {
+      var departureFlexibility = parseInt(document.querySelector('input[name="departure-flexibility"]:checked').value);
+      var returnFlexibility = parseInt(document.querySelector('input[name="return-flexibility"]:checked').value);
+      var numTabs = departureFlexibility * returnFlexibility;
+      document.getElementById("open-button").textContent = 'Open ' + numTabs + ' tabs in Google Flights';
+    };
+  });
+
   var locationInputIds = ['origin', 'first-destination', 'second-destination'];
   var timeout = void 0;
   locationInputIds.forEach(function (elementId) {
