@@ -46,6 +46,7 @@ const addNDaysToDateString = (dateString, n) => {
       }
     }
 
+    window.focus();
     e.preventDefault();
   }
 }());

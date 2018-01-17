@@ -50,6 +50,7 @@ var addNDaysToDateString = function addNDaysToDateString(dateString, n) {
       }
     }
 
+    window.focus();
     e.preventDefault();
   };
 })();
