@@ -9,6 +9,13 @@ const addNDaysToDateString = (dateString, n) => {
 }
 
 (function(){
+  document.querySelectorAll('input[type="date"]').forEach((e) => {
+    flatpickr(e, {
+      defaultDate: 'today',
+      altInput: true
+    });
+  });
+
   const locationInputIds = ['origin', 'first-destination', 'second-destination'];
   let timeout;
   locationInputIds.forEach((elementId) => {
@@ -26,6 +33,7 @@ const addNDaysToDateString = (dateString, n) => {
           document.getElementById('dates-div').className = '';
           document.querySelector('label[for="departure-date"]').textContent = `When are you going to ${locationValues[1]}?`;
           document.querySelector('label[for="return-date"]').textContent = `When are you going back to ${locationValues[2]}?`;
+          document.getElementById("open-button").disabled = false;
         }, 500);
       }
     }
