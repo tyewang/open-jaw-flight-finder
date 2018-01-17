@@ -2,6 +2,12 @@ const buildItiString = (from, to, date) => {
   return [from.join(','), to.join(','), date].join('_')
 }
 
+const addNDaysToDateString = (dateString, n) => {
+  const dateAsMoment = moment(dateString, "YYYY-MM-DD");
+  dateAsMoment.add(n, 'days');
+  return dateAsMoment.format("YYYY-MM-DD");
+}
+
 (function(){
   document.getElementById("open-button").onclick = (e) => {
     const [origins, firstDestinations, secondDestinations] = [
@@ -16,19 +22,30 @@ const buildItiString = (from, to, date) => {
 
     const [
       departureDate,
-      departureDateFlexibility,
       returnDate,
-      returnDateFlexiblity
     ] = [
       'departure-date',
-      'departure-flexibility',
       'return-date',
-      'return-flexibility'
     ].map(elementName => document.getElementsByName(elementName)[0].value)
 
-    const itiString = buildItiString(origins, firstDestinations, departureDate) + '*' + buildItiString(firstDestinations, secondDestinations, returnDate)
-    const url = `https://www.google.com/flights/#search;d=2018-01;r=OW;iti=${itiString};tt=m;eo=e`
-    window.open(url, '_blank');
+    const [
+      departureDateFlexibility,
+      returnDateFlexibility
+    ] = [
+      'departure-flexibility',
+      'return-flexibility'
+    ].map(elementName => parseInt(document.querySelector(`input[name="${elementName}"]:checked`).value))
+
+    for(let i=0; i < departureDateFlexibility; i++){
+      const departureDateToCheck = addNDaysToDateString(departureDate, Math.floor(departureDateFlexibility/2) - i)
+      for(let j=0; j < returnDateFlexibility; j++){
+        const returnDateToCheck = addNDaysToDateString(returnDate, Math.floor(returnDateFlexibility/2) - j)
+        const itiString = buildItiString(origins, firstDestinations, departureDateToCheck) + '*' + buildItiString(firstDestinations, secondDestinations, returnDateToCheck)
+        const url = `https://www.google.com/flights/#search;d=2018-01;r=OW;iti=${itiString};tt=m;eo=e`
+        window.open(url, '_blank');
+      }
+    }
+
     e.preventDefault();
   }
 }());

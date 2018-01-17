@@ -23,7 +23,7 @@
       </div>
       <div class='field'>
         <label class="label" for="departure-flexibility">How flexible is this date?</label>
-        <input type="radio" name="departure-flexibility" value="0">
+        <input type="radio" name="departure-flexibility" value="1" checked>
         Not flexible
         <input type="radio" name="departure-flexibility" value="3">
         A bit flexible
@@ -36,7 +36,7 @@
       </div>
       <div class='field'>
         <label class="label" for="return-flexibility">How flexible is this date?</label>
-        <input type="radio" name="return-flexibility" value="0">
+        <input type="radio" name="return-flexibility" value="1" checked>
         Not flexible
         <input type="radio" name="return-flexibility" value="3">
         A bit flexible
@@ -47,5 +47,6 @@
   </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/dist/analyze-flights.js"></script>
 </form>
