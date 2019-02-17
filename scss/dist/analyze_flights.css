@@ -12,11 +12,11 @@ button {
 .content {
   background-image: url("../../img/background.jpg");
   background-size: cover;
-  padding: 0 1em 0 1em; }
+  padding: 0 1em 0 1em;
+  min-height: 101vh; }
 
 .is-three-quarters {
   padding-top: 2em;
-  background-color: white;
-  min-height: 101vh; }
+  background-color: white; }
 
 /*# sourceMappingURL=analyze_flights.css.map */
